@@ -1,254 +1,346 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>SoftAce</title>
+    <title>SoftAce</title>
 
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-<body>
-  <main>
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-      <div class="hero-card hero-card-top-left">
-        <img src="./assets/images/hero-card-topleft.webp" alt="" />
-      </div>
-
-      <div class="hero-card hero-card-top-right">
-        <img src="./assets/images/hero-card-topright.webp" alt="" />
-      </div>
-
-      <div class="hero-content">
-        <p class="hero-kicker">ONE PLATFORM</p>
-
-        <h1>
-          EVERY DOCUMENT, EVERY APPROVAL
-        </h1>
-
-        <p class="hero-description">
-            Manage documents, automate workflows, and maintain visibility 
-            across your organization from a single source of truth.
-        </p>
-      </div>
-
-      <div class="hero-card hero-card-bottom-left">
-        <img src="./assets/images/hero-card-bottomleft.webp" alt="" />
-      </div>
-
-      <div class="hero-card hero-card-bottom-right">
-        <img src="./assets/images/hero-card-bottomright.webp" alt="" />
-      </div>
-    </section>
-
-    <!-- FILES SECTION -->
-    <section class="files-section">
-        <div class="files-sticky page-container">
-            <div class="files-top">
-                <h2 id="filesTitle">
-                    INTERACT WITH ORGANIZED<br />
-                    FILES & FOLDERS
-                </h2>
-
-                <div class="files-actions">
-                    <button class="btn btn-secondary">🎧 Talk to Support</button>
-                    <button class="btn btn-primary">Create an account</button>
-                </div>
-            </div>
-
-            <div class="files-showcase">
-                <div class="files-progress">
-                    <span class="active"></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-                <div class="files-preview">
-                    <img id="filesPreviewImage" src="./assets/images/files-preview-1.png" alt="" />
-                </div>
-
-                <div class="testimonial-card" id="testimonialCard">
-                    <p class="testimonial-label">Library</p>
-
-                    <p class="testimonial-text">
-                    The library has become our single source of truth.
-                    <strong>Everyone knows where documents belong.</strong>
-                    </p>
-
-                    <img src="./assets/images/testimonial-1.png" alt="" class="testimonial-person" />
-
-                    <div class="testimonial-info">
-                        <h3>JEREMIAH FOLORUNSO</h3>
-                        <p>UX Consultant, Soft Alliance</p>
-                    </div>
-                </div>
-            </div>
+  <body>
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="hero-card hero-card-top-left">
+          <img src="./assets/images/hero-card-topleft.webp" alt="" />
         </div>
-    </section>
 
-    <!-- FOUNDATION SECTION -->
-    <section class="foundation-section page-container">
+        <div class="hero-card hero-card-top-right">
+          <img src="./assets/images/hero-card-topright.webp" alt="" />
+        </div>
+
+        <div class="hero-content">
+          <p class="hero-kicker">ONE PLATFORM</p>
+
+          <h1>EVERY DOCUMENT, EVERY APPROVAL</h1>
+
+          <p class="hero-description">
+            Manage documents, automate workflows, and maintain visibility across your organization
+            from a single source of truth.
+          </p>
+        </div>
+
+        <div class="hero-card hero-card-bottom-left">
+          <img src="./assets/images/hero-card-bottomleft.webp" alt="" />
+        </div>
+
+        <div class="hero-card hero-card-bottom-right">
+          <img src="./assets/images/hero-card-bottomright.webp" alt="" />
+        </div>
+      </section>
+
+      <!-- FILES SECTION -->
+      <section class="files-section">
+        <div class="files-sticky page-container">
+          <div class="files-top">
+            <h2 id="filesTitle">
+              INTERACT WITH ORGANIZED<br />
+              FILES & FOLDERS
+            </h2>
+
+            <div class="files-actions">
+              <button class="btn btn-secondary" type="button">🎧 Talk to Support</button>
+              <button class="btn btn-primary" type="button">Create an account</button>
+            </div>
+          </div>
+
+          <div class="files-showcase">
+            <div class="files-progress">
+              <span class="active"></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="files-preview">
+              <video
+                id="filesPreviewMedia"
+                src="./assets/videos/files-preview-1.webm"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial-section page-container">
+        <div class="testimonial-grid">
+          <article class="testimonial-card blue-card">
+            <div class="testimonial-top">
+              <div class="testimonial-label-row">
+                <img src="./assets/icons/library.svg" alt="" class="testimonial-icon" />
+                <p class="testimonial-label">Library</p>
+              </div>
+
+              <p class="testimonial-text">
+                The library has become our single source of truth.
+                <strong>Everyone knows where documents belong.</strong>
+              </p>
+            </div>
+
+            <img
+              src="./assets/images/Testimonial_Image_1.png"
+              alt="Jeremiah Folorunso"
+              class="testimonial-person"
+            />
+
+            <div class="testimonial-info">
+              <h3>JEREMIAH FOLORUNSO</h3>
+              <p>UX Consultant, Soft Alliance</p>
+            </div>
+          </article>
+
+          <article class="testimonial-card green-card">
+            <div class="testimonial-top">
+              <div class="testimonial-label-row">
+                <img src="./assets/icons/library.svg" alt="" class="testimonial-icon" />
+                <p class="testimonial-label">Cabinets</p>
+              </div>
+
+              <p class="testimonial-text">
+                Cabinets gave us a
+                <strong>standardized way to organize documents across departments.</strong>
+              </p>
+            </div>
+
+            <img
+              src="./assets/images/Testimonial_Image_1.png"
+              alt="Jeremiah Folorunso"
+              class="testimonial-person"
+            />
+
+            <div class="testimonial-info">
+              <h3>JEREMIAH FOLORUNSO</h3>
+              <p>UX Consultant, Soft Alliance</p>
+            </div>
+          </article>
+
+          <article class="testimonial-card red-card">
+            <div class="testimonial-top">
+              <div class="testimonial-label-row">
+                <img src="./assets/icons/library.svg" alt="" class="testimonial-icon" />
+                <p class="testimonial-label">Cabinets</p>
+              </div>
+
+              <p class="testimonial-text">
+                Cabinets gave us a
+                <strong>standardized way to organize documents across departments.</strong>
+              </p>
+            </div>
+
+            <img
+              src="./assets/images/Testimonial_Image_1.png"
+              alt="Jeremiah Folorunso"
+              class="testimonial-person"
+            />
+
+            <div class="testimonial-info">
+              <h3>JEREMIAH FOLORUNSO</h3>
+              <p>UX Consultant, Soft Alliance</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FOUNDATION SECTION -->
+      <section class="foundation-section page-container">
         <div class="foundation-visual">
-            <div class="foundation-rail foundation-rail-left">
-            <span></span>
-            <strong></strong>
-            </div>
-
-            <img src="./assets/images/softace-logo.png" alt="SoftAce logo" class="foundation-logo" />
-
-            <div class="foundation-rail foundation-rail-right">
-            <strong></strong>
-            <span></span>
-            </div>
+          <video
+            class="foundation-video"
+            src="./assets/videos/Product_reveal.webm"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
         </div>
 
         <div class="foundation-content">
-            <div class="foundation-left">
-            <h2>
-                THE FOUNDATION FOR BETTER<br />
-                DOCUMENT MANAGEMENT.
-            </h2>
+          <div class="foundation-left">
+            <h2>THE FOUNDATION FOR BETTER DOCUMENT MANAGEMENT.</h2>
 
-            <p>Built and supported by a global organization</p>
-
-            <img src="./assets/images/soft-alliance-logo.png" alt="Soft Alliance logo" />
+            <div class="foundation-support">
+              <p>Built and supported by a global organization</p>
+              <img src="./assets/images/soft-alliance-logo.png" alt="Soft Alliance logo" />
             </div>
+          </div>
 
-            <div class="foundation-right">
+          <div class="foundation-right">
             <p>
-                SoftAce helps organizations manage documents from creation to archival
-                through controlled access and centralized storage.
+              SoftAce helps organizations manage documents from creation to archival through
+              controlled access and centralized storage.
             </p>
 
             <form class="foundation-form">
-                <input type="email" placeholder="Enter your email" />
-                <button type="submit">Try for free</button>
+              <input type="email" placeholder="Enter your email" />
+              <button type="submit">Try for free</button>
             </form>
-            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- RESOURCES SECTION -->
-    <section class="resources-section page-container">
+      <!-- RESOURCES SECTION -->
+      <section class="resources-section page-container">
         <h2>
-            RESOURCES TO HELP YOU<br />
-            GET STARTED
+          RESOURCES TO HELP YOU<br />
+          GET STARTED
         </h2>
 
         <div class="resources-grid">
-            <article class="resource-card">
-                <div class="resource-card-top">
-                    <div>
-                    <h3>USER MANUAL</h3>
-                    <p>For End-Users and Administrators</p>
+          <article class="resource-card">
+            <div class="resource-card-top">
+              <div>
+                <h3>USER MANUAL</h3>
+                <p>For End-Users and Administrators</p>
 
-                    <a href="#" class="resource-btn">
-                        Download User Manual
-                        <span>↓</span>
-                    </a>
-                    </div>
+                <a href="#" class="resource-btn">
+                  Download
+                  <span>↓</span>
+                </a>
+              </div>
+            </div>
 
-                    <img src="./assets/images/user-manual-book.png" alt="" />
-                </div>
+            <ul class="resource-list">
+              <li>Feature Walkthroughs</li>
+              <li>Workflow guides</li>
+              <li>Administration setup</li>
+              <li>Best practices</li>
+              <li>Troubleshooting</li>
+            </ul>
+          </article>
 
-                <ul class="resource-list">
-                    <li>Feature Walkthroughs</li>
-                    <li>Workflow guides</li>
-                    <li>Administration setup</li>
-                    <li>Best practices</li>
-                    <li>Troubleshooting</li>
-                </ul>
-            </article>
+          <article class="resource-card">
+            <div class="resource-card-top">
+              <div>
+                <h3>DEVELOPER DOCUMENTATION</h3>
+                <p>For Developers and Technical Teams</p>
 
-            <article class="resource-card">
-                <div class="resource-card-top">
-                    <div>
-                    <h3>DEVELOPER DOCUMENTATION</h3>
-                    <p>For Developers and Technical Teams</p>
+                <button class="coming-soon" type="button">Coming Soon 🪂</button>
+              </div>
+            </div>
 
-                    <button class="coming-soon" type="button">
-                        Coming Soon 🪂
-                    </button>
-                    </div>
-                </div>
+            <ul class="resource-list">
+              <li>API Reference</li>
+              <li>Authentication</li>
+              <li>Webhooks</li>
+              <li>Integration Guides</li>
+              <li>Code Samples</li>
+            </ul>
+          </article>
 
-                <ul class="resource-list">
-                    <li>API Reference</li>
-                    <li>Authentication</li>
-                    <li>Webhooks</li>
-                    <li>Integration Guides</li>
-                    <li>Code Samples</li>
-                </ul>
-            </article>
+          <article class="resource-card">
+            <div class="resource-card-top">
+              <div>
+                <h3>DEVELOPER DOCUMENTATION</h3>
+                <p>For Developers and Technical Teams</p>
+
+                <button class="coming-soon" type="button">Coming Soon 🪂</button>
+              </div>
+            </div>
+
+            <ul class="resource-list">
+              <li>API Reference</li>
+              <li>Authentication</li>
+              <li>Webhooks</li>
+              <li>Integration Guides</li>
+              <li>Code Samples</li>
+            </ul>
+          </article>
         </div>
-    </section>
+      </section>
 
-    <!-- FAQ SECTION -->
-    <section class="faq-section page-container">
+      <!-- FAQ SECTION -->
+      <section class="faq-section page-container">
         <h2>
-            FREQUENTLY ASKED<br />
-            QUESTIONS
+          FREQUENTLY ASKED<br />
+          QUESTIONS
         </h2>
 
         <div class="faq-list">
-            <div class="faq-item active">
-                <button class="faq-question" type="button">
-                    <span>What is SoftAce?</span>
-                    <span class="faq-icon">⌄</span>
-                </button>
+          <div class="faq-item active">
+            <button class="faq-question" type="button">
+              <span>What is SoftAce?</span>
+              <span class="faq-icon">⌄</span>
+            </button>
 
-                <div class="faq-answer">
-                    <p>
-                    SoftAce helps organizations manage documents from creation to archival
-                    through controlled access and centralized storage.
-                    </p>
-                </div>
+            <div class="faq-answer">
+              <p>
+                SoftAce helps organizations manage documents from creation to archival through
+                controlled access and centralized storage.
+              </p>
             </div>
+          </div>
 
-            <div class="faq-item">
-                <button class="faq-question" type="button">
-                    <span>Is SoftAce paid?</span>
-                    <span class="faq-icon">⌄</span>
-                </button>
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Is SoftAce paid?</span>
+              <span class="faq-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    fill="currentColor"
+                    d="M11 4h2v12l5.5-5.5l1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5L11 16z"
+                  />
+                </svg>
+              </span>
+            </button>
 
-                <div class="faq-answer">
-                    <p>Yes. SoftAce is available based on your organization’s document needs and setup.</p>
-                </div>
+            <div class="faq-answer">
+              <p>
+                Yes. SoftAce is available based on your organization’s document needs and setup.
+              </p>
             </div>
+          </div>
 
-            <div class="faq-item">
-                <button class="faq-question" type="button">
-                    <span>Do we need to have a microsoft subscription?</span>
-                    <span class="faq-icon">⌄</span>
-                </button>
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Do we need to have a microsoft subscription?</span>
+              <span class="faq-icon">⌄</span>
+            </button>
 
-                <div class="faq-answer">
-                    <p>No. SoftAce can be used as a standalone document management platform.</p>
-                </div>
+            <div class="faq-answer">
+              <p>No. SoftAce can be used as a standalone document management platform.</p>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- FOOTER -->
-    <footer class="footer-section">
+      <!-- FOOTER -->
+      <footer class="footer-section">
         <div class="footer-top page-container">
-            <p>© 2026 SoftAce, All rights reserved.</p>
+          <p>© 2026 SoftAce, All rights reserved.</p>
 
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Contact Us</a>
-            </div>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact Us</a>
+          </div>
         </div>
 
         <div class="footer-wordmark">
-            <img src="./assets/images/softace-footer-wordmark.svg" alt="SoftAce" />
+          <img src="./assets/images/softace-footer-wordmark.svg" alt="SoftAce" />
         </div>
-    </footer>
+      </footer>
+    </main>
 
-  </main>
-
-  <script src="./js/script.js"></script>
-</body>
+    <script src="./js/script.js"></script>
+  </body>
 </html>

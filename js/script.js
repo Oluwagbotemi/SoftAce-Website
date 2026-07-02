@@ -1,36 +1,20 @@
 const filesSection = document.querySelector(".files-section");
 const filesTitle = document.querySelector("#filesTitle");
-const filesPreviewImage = document.querySelector("#filesPreviewImage");
-const testimonialCard = document.querySelector("#testimonialCard");
+const filesPreviewMedia = document.querySelector("#filesPreviewMedia");
 const progressBars = document.querySelectorAll(".files-progress span");
 
 const filesSlides = [
   {
     title: "INTERACT WITH ORGANIZED<br />FILES & FOLDERS",
-    image: "./assets/images/files-preview-1.png",
-    label: "Library",
-    text: `The library has become our single source of truth. <strong>Everyone knows where documents belong.</strong>`,
-    person: "./assets/images/testimonial-1.png",
-    name: "JEREMIAH FOLORUNSO",
-    role: "UX Consultant, Soft Alliance",
+    media: "./assets/videos/files-preview-1.webm",
   },
   {
-    title: "REVIEW DOCUMENTS<br />WITHOUT CONFUSION",
-    image: "./assets/images/files-preview-2.png",
-    label: "Approvals",
-    text: `Approvals are now easier to track. <strong>Teams know what needs attention and what has been completed.</strong>`,
-    person: "./assets/images/testimonial-2.png",
-    name: "ESEOSA BELO-OSAGIE",
-    role: "Product Designer, Soft Alliance",
+    title: "WORK WITH STRUCTURED<br />CABINETS",
+    media: "./assets/videos/files-preview-2.webm",
   },
   {
-    title: "KEEP WORKFLOWS<br />MOVING FASTER",
-    image: "./assets/images/files-preview-3.png",
-    label: "Workflow",
-    text: `We spend less time chasing updates. <strong>SoftAce helps everyone stay aligned.</strong>`,
-    person: "./assets/images/testimonial-3.png",
-    name: "SOFTACE USER",
-    role: "Operations Team",
+    title: "MANAGE DOCUMENTS<br />WITH CLARITY",
+    media: "./assets/videos/files-preview-3.webm",
   },
 ];
 
@@ -43,20 +27,10 @@ function updateFilesSection(index) {
   const slide = filesSlides[index];
 
   filesTitle.innerHTML = slide.title;
-  filesPreviewImage.src = slide.image;
+  filesPreviewMedia.src = slide.media;
+  filesPreviewMedia.load();
 
-  testimonialCard.innerHTML = `
-    <p class="testimonial-label">${slide.label}</p>
-
-    <p class="testimonial-text">${slide.text}</p>
-
-    <img src="${slide.person}" alt="" class="testimonial-person" />
-
-    <div class="testimonial-info">
-      <h3>${slide.name}</h3>
-      <p>${slide.role}</p>
-    </div>
-  `;
+  filesPreviewMedia.play().catch(() => {});
 
   progressBars.forEach((bar, barIndex) => {
     bar.classList.toggle("active", barIndex === index);
@@ -77,4 +51,24 @@ window.addEventListener("scroll", () => {
   }
 
   updateFilesSection(index);
+});
+
+/* ========================================
+   FAQ
+======================================== */
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach((item) => {
+  const question = item.querySelector(".faq-question");
+
+  question.addEventListener("click", () => {
+    faqItems.forEach((faq) => {
+      if (faq !== item) {
+        faq.classList.remove("active");
+      }
+    });
+
+    item.classList.toggle("active");
+  });
 });
