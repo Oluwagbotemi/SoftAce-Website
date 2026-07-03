@@ -98,6 +98,23 @@ input {
   color: var(--black);
 }
 
+.reveal-section {
+  opacity: 0.55;
+  filter: blur(6px);
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s ease,
+    filter 0.7s ease,
+    transform 0.7s ease;
+  will-change: opacity, filter, transform;
+}
+
+.reveal-section.in-view {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
 /* ========================================
    HERO SECTION
 ======================================== */
@@ -250,6 +267,10 @@ input {
   background: #ffffff;
   color: #111111;
   border: 1px solid #b8c3cf;
+  gap: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary {
@@ -347,7 +368,7 @@ input {
 .testimonial-label-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 12px;
 }
 
@@ -621,35 +642,37 @@ input {
 }
 
 .resource-list {
-  margin-top: 16px;
+  padding: 16px 12px;
   list-style: none;
   display: grid;
   gap: 16px;
-  padding: 8px;
 }
 
 .resource-list li {
-  position: relative;
-  padding-left: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 14px;
   line-height: 20px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--gray40);
 }
 
-.resource-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: -2px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #e7e7e7;
-  color: var(--gray40);
-  display: grid;
-  place-items: center;
-  font-size: 12px;
+.resource-check-wrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--gray05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resource-check-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
 }
 
 
