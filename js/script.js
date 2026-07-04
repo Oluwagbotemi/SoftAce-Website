@@ -99,3 +99,58 @@ const revealObserver = new IntersectionObserver(
 revealSections.forEach((section) => {
   revealObserver.observe(section);
 });
+
+/* ========================================
+   HERO LOAD REVEAL
+======================================== */
+
+window.addEventListener("load", () => {
+  document.body.classList.add("hero-loaded");
+});
+
+/* ========================================
+   HERO BLUR ON SCROLL
+   Blur only when hero is about 80–90% out
+======================================== */
+
+const heroSection = document.querySelector("#heroSection");
+
+function updateHeroBlur() {
+  if (!heroSection) return;
+
+  const rect = heroSection.getBoundingClientRect();
+  const viewportH = window.innerHeight;
+  const sectionH = rect.height;
+
+  // how far hero has moved past the top
+  const scrolled = Math.max(0, -rect.top);
+
+  // total distance before hero is fully gone
+  const maxScroll = sectionH;
+
+  // normalized progress 0 -> 1
+  const progress = Math.min(scrolled / maxScroll, 1);
+
+  // only begin blur very late in the section scroll
+  const blurStart = 0.45;
+  const blurEnd = 1;
+
+  let blurProgress = 0;
+
+  if (progress > blurStart) {
+    blurProgress = (progress - blurStart) / (blurEnd - blurStart);
+    blurProgress = Math.min(Math.max(blurProgress, 0), 1);
+  }
+
+  const blurValue = blurProgress * 10;      // adjust if you want lighter/heavier blur
+  const opacityValue = 1 - blurProgress * 0.18;
+  const scaleValue = 1 - blurProgress * 0.015;
+
+  heroSection.style.setProperty("--section-blur", `${blurValue}px`);
+  heroSection.style.setProperty("--section-opacity", opacityValue);
+  heroSection.style.setProperty("--section-scale", scaleValue);
+}
+
+window.addEventListener("scroll", updateHeroBlur, { passive: true });
+window.addEventListener("resize", updateHeroBlur);
+updateHeroBlur();
