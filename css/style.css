@@ -225,16 +225,13 @@ input {
   border-radius: 40px;
   background: #121212;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 42px 20px 20px;
 }
 
-/* =========================
-   TOP LOGO
-========================= */
+/* TOP LOGO */
 
 .hero-logo {
   display: flex;
@@ -244,14 +241,12 @@ input {
 
 .hero-logo img {
   width: 64px;
-  height: fit-content;
+  height: auto;
   object-fit: contain;
   display: block;
 }
 
-/* =========================
-   CENTER CONTENT
-========================= */
+/* CENTER CONTENT */
 
 .hero-content-v2 {
   max-width: 900px;
@@ -265,7 +260,7 @@ input {
 .hero-content-v2 h1 {
   font-family: "Tanker", sans-serif;
   font-size: clamp(48px, 7vw, 96px);
-  line-height: 100px;
+  line-height: 1.04;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #ffffff;
@@ -290,9 +285,7 @@ input {
   flex-wrap: wrap;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 .hero-btn-primary,
 .hero-btn-secondary {
@@ -315,37 +308,32 @@ input {
   box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18);
 }
 
-.hero-btn-primary:hover {
-  transform: translateY(-1px);
-}
-
 .hero-btn-secondary {
   border: 1px solid rgba(255, 255, 255, 0.45);
   color: #ffffff;
   background: transparent;
 }
 
-.hero-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* =========================
-   BOTTOM STRIP
-========================= */
+/* BOTTOM STRIP */
 
 .hero-bottom-strip {
   width: 100%;
   display: grid;
-  grid-template-columns: 96px 96px 96px minmax(260px, 1fr) 96px 96px 96px;
+  grid-template-columns: 96px 96px minmax(260px, 1fr) 96px 96px 96px;
   align-items: end;
   gap: 18px;
   margin-top: 40px;
 }
 
+.hero-chip,
+.hero-chip-avatar,
+.hero-chip-wide {
+  background: #2f2f2f;
+}
+
 .hero-chip {
   height: 100px;
   border-radius: 24px;
-  background: #2f2f2f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -361,8 +349,8 @@ input {
 
 .hero-chip-wide {
   height: 100px;
-  border-radius: 28px;
-  background: #2f2f2f;
+  border-radius: 24px;
+  overflow: hidden;
 }
 
 .hero-chip-wide img {
@@ -370,19 +358,26 @@ input {
   max-height: 70px;
 }
 
-/* Bottom Interaction */
+/* AVATAR TILES */
 
-.hero-transfer-strip {
-  grid-template-columns: 96px 96px minmax(260px, 1fr) 96px 96px 96px;
+.hero-chip-avatar {
+  width: 100%;
+  height: 100px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: block;
+  position: relative;
 }
 
-.hero-chip,
-.hero-chip-avatar,
-.hero-chip-wide {
-  background: #2f2f2f;
+.hero-chip-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
 }
 
-/* Reveal sequence */
+/* TRANSFER INTERACTION */
 
 .transfer-item {
   opacity: 0;
@@ -436,7 +431,7 @@ input {
   }
 }
 
-/* Long rectangle loader */
+/* LOADER */
 
 .transfer-loader {
   height: 100px;
@@ -465,53 +460,18 @@ input {
   border-bottom-right-radius: 20px;
 }
 
-.transfer-loader span:nth-child(1) {
-  animation-delay: 1.4s;
-}
-
-.transfer-loader span:nth-child(2) {
-  animation-delay: 1.55s;
-}
-
-.transfer-loader span:nth-child(3) {
-  animation-delay: 1.7s;
-}
-
-.transfer-loader span:nth-child(4) {
-  animation-delay: 1.85s;
-}
-
-.transfer-loader span:nth-child(5) {
-  animation-delay: 2s;
-}
-
-.transfer-loader span:nth-child(6) {
-  animation-delay: 2.15s;
-}
-
-.transfer-loader span:nth-child(7) {
-  animation-delay: 2.3s;
-}
-
-.transfer-loader span:nth-child(8) {
-  animation-delay: 2.45s;
-}
-
-.transfer-loader span:nth-child(9) {
-  animation-delay: 2.6s;
-}
-
-.transfer-loader span:nth-child(10) {
-  animation-delay: 2.75s;
-}
-
-.transfer-loader span:nth-child(11) {
-  animation-delay: 2.9s;
-}
-
-.transfer-loader span:nth-child(12) {
-  animation-delay: 3.05s;
-}
+.transfer-loader span:nth-child(1) { animation-delay: 1.4s; }
+.transfer-loader span:nth-child(2) { animation-delay: 1.55s; }
+.transfer-loader span:nth-child(3) { animation-delay: 1.7s; }
+.transfer-loader span:nth-child(4) { animation-delay: 1.85s; }
+.transfer-loader span:nth-child(5) { animation-delay: 2s; }
+.transfer-loader span:nth-child(6) { animation-delay: 2.15s; }
+.transfer-loader span:nth-child(7) { animation-delay: 2.3s; }
+.transfer-loader span:nth-child(8) { animation-delay: 2.45s; }
+.transfer-loader span:nth-child(9) { animation-delay: 2.6s; }
+.transfer-loader span:nth-child(10) { animation-delay: 2.75s; }
+.transfer-loader span:nth-child(11) { animation-delay: 2.9s; }
+.transfer-loader span:nth-child(12) { animation-delay: 3.05s; }
 
 @keyframes transferLoaderLoop {
   0%,
@@ -530,31 +490,62 @@ input {
   }
 }
 
-/* =========================
-   AVATAR TILES
-========================= */
+/* HERO BLUR ON SCROLL */
 
-.hero-chip-avatar {
-  width: 100%;
-  height: 100px;
-  border-radius: 2000px;
-  background: #2f2f2f;
-  overflow: hidden;
-  display: block;
+.blur-section {
+  --section-blur: 0px;
+  --section-opacity: 1;
+  --section-scale: 1;
+  filter: blur(var(--section-blur));
+  opacity: var(--section-opacity);
+  transform: scale(var(--section-scale));
+  transform-origin: center top;
+  transition:
+    filter 0.25s linear,
+    opacity 0.25s linear,
+    transform 0.25s linear;
+  will-change: filter, opacity, transform;
+}
+
+/* HERO BLOCK REVEAL */
+
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  will-change: opacity, transform;
   position: relative;
+  overflow: hidden;
 }
 
-.hero-chip-avatar img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center top;
+.hero-loaded .hero-reveal {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* =========================
-   TABLET
-========================= */
+.hero-reveal-delay-1 { transition-delay: 0.08s; }
+.hero-reveal-delay-2 { transition-delay: 0.18s; }
+.hero-reveal-delay-3 { transition-delay: 0.3s; }
+.hero-reveal-delay-4 { transition-delay: 0.42s; }
+
+.hero-reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #121212;
+  transform: translateX(0%);
+  transition: transform 0.85s cubic-bezier(0.77, 0, 0.18, 1);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-loaded .hero-reveal::after {
+  transform: translateX(102%);
+}
+
+/* TABLET */
 
 @media (max-width: 1200px) {
   .hero-shell {
@@ -567,25 +558,19 @@ input {
   }
 
   .hero-bottom-strip {
-    grid-template-columns: 88px 88px 88px minmax(180px, 1fr) 88px 88px 88px;
+    grid-template-columns: 88px 88px minmax(180px, 1fr) 88px 88px 88px;
     gap: 14px;
   }
 
   .hero-chip,
   .hero-chip-wide,
-  .hero-chip-avatar {
+  .hero-chip-avatar,
+  .transfer-loader {
     height: 90px;
-  }
-
-  .hero-chip-avatar img {
-    width: 56px;
-    height: 56px;
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 768px) {
   .hero-section-v2 {
@@ -600,7 +585,6 @@ input {
 
   .hero-logo img {
     width: 52px;
-    height: 52px;
   }
 
   .hero-content-v2 h1 {
@@ -629,112 +613,20 @@ input {
   }
 
   .hero-bottom-strip {
-    margin-top: 32px;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    align-items: center;
+    display: block;
+    margin-top: 48px;
   }
 
-  .hero-chip-wide {
-    grid-column: span 2;
+  .hero-bottom-strip > :not(.transfer-loader) {
+    display: none;
   }
 
-  .hero-chip,
-  .hero-chip-wide,
-  .hero-chip-avatar {
+  .transfer-loader {
+    width: 100%;
     height: 76px;
+    padding: 12px;
     border-radius: 22px;
   }
-
-  .hero-chip img,
-  .hero-chip-wide img {
-    max-width: 42px;
-    max-height: 42px;
-  }
-
-  .hero-chip-avatar img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-  }
-}
-
-/* =========================
-   HERO BLUR ON SCROLL
-========================= */
-
-.blur-section {
-  --section-blur: 0px;
-  --section-opacity: 1;
-  --section-scale: 1;
-
-  filter: blur(var(--section-blur));
-  opacity: var(--section-opacity);
-  transform: scale(var(--section-scale));
-  transform-origin: center top;
-  transition:
-    filter 0.25s linear,
-    opacity 0.25s linear,
-    transform 0.25s linear;
-  will-change: filter, opacity, transform;
-}
-
-/* =========================
-   HERO BLOCK / REVEAL ENTRANCE
-========================= */
-
-.hero-reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-  will-change: opacity, transform;
-}
-
-.hero-loaded .hero-reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-reveal-delay-1 {
-  transition-delay: 0.08s;
-}
-
-.hero-reveal-delay-2 {
-  transition-delay: 0.18s;
-}
-
-.hero-reveal-delay-3 {
-  transition-delay: 0.3s;
-}
-
-.hero-reveal-delay-4 {
-  transition-delay: 0.42s;
-}
-
-/* =========================
-   OPTIONAL MASKED BLOCK REVEAL LOOK
-========================= */
-
-.hero-reveal {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-reveal::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #121212;
-  transform: translateX(0%);
-  transition: transform 0.85s cubic-bezier(0.77, 0, 0.18, 1);
-  z-index: 5;
-  pointer-events: none;
-}
-
-.hero-loaded .hero-reveal::after {
-  transform: translateX(102%);
 }
 
 /* ========================================
@@ -846,6 +738,67 @@ input {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* ========================================
+   FILES SECTION MOBILE 
+======================================== */
+
+@media (max-width: 768px) {
+  .files-section {
+    height: 260vh;
+  }
+
+  .files-sticky {
+    position: sticky;
+    top: 24px;
+    min-height: calc(100svh - 48px);
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .files-top {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .files-top h2 {
+    width: 100%;
+    max-width: none;
+    font-size: 30px;
+    line-height: 1.15;
+  }
+
+  .files-actions {
+    width: 100%;
+    padding-top: 0;
+    gap: 12px;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .files-actions .btn,
+  .files-actions button {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    padding: 0 14px;
+    font-size: 14px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .files-progress {
+    height: 420px;
+  }
+
+  .files-preview {
+    height: 420px;
+    border-radius: 20px;
+  }
 }
 
 /* =========================
