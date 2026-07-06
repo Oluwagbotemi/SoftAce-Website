@@ -40,7 +40,7 @@ input {
 
 @font-face {
   font-family: "Tanker";
-  src: url("../assets/fonts/Tanker-Regular.woff2") format("woff2");
+  src: url("../assets/fonts/Tanker-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -50,6 +50,22 @@ input {
   font-family: "Satoshi";
   src: url("../assets/fonts/Satoshi-Regular.woff2") format("woff2");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -746,14 +762,14 @@ input {
 
 @media (max-width: 768px) {
   .files-section {
-    height: 260vh;
+    height: auto;
   }
 
   .files-sticky {
-    position: sticky;
-    top: 24px;
-    min-height: calc(100svh - 48px);
-    justify-content: center;
+    position: relative;
+    top: auto;
+    min-height: auto;
+    justify-content: flex-start;
     padding-top: 0;
   }
 
@@ -789,6 +805,11 @@ input {
     font-size: 14px;
     white-space: normal;
     text-align: center;
+  }
+
+  .files-showcase {
+    grid-template-columns: 8px 1fr;
+    gap: 12px;
   }
 
   .files-progress {
@@ -836,6 +857,20 @@ input {
 
 .red-card {
   background: #ff4b37;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .testimonial-card {
+    min-height: 486px;
+    height: 486px;
+  }
 }
 
 /* =========================
@@ -928,6 +963,7 @@ input {
   line-height: 20px;
   color: #ffffff;
 }
+
 
 /* ========================================
    FOUNDATION SECTION
@@ -1033,6 +1069,96 @@ input {
   font-weight: 700;
   cursor: pointer;
   box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18);
+}
+
+/* ========================================
+   FOUNDATION SECTION MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .foundation-content {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .foundation-left,
+  .foundation-right {
+    width: 100%;
+    max-width: none;
+  }
+
+  .foundation-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .foundation-left h2 {
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    max-width: none;
+  }
+
+  .foundation-left p {
+    margin-top: 0;
+    width: 100%;
+    max-width: none;
+  }
+
+  .foundation-left img {
+    margin-top: 6px;
+    width: 180px;
+    height: auto;
+  }
+
+  .foundation-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .foundation-right p {
+    width: 100%;
+    max-width: none;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .foundation-form {
+    margin-top: 0;
+    width: 100%;
+    height: 56px;
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    border: 1px solid #aebdca;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .foundation-form input {
+    width: 100%;
+    min-width: 0;
+    height: 56px;
+    padding: 0 20px;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    background: transparent;
+  }
+
+  .foundation-form button {
+    width: 100%;
+    height: 56px;
+    border: 0;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
 }
 
 /* ========================================
@@ -1159,6 +1285,22 @@ input {
 }
 
 /* ========================================
+   RESOURCES SECTION MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .resource-card {
+    width: 100%;
+  }
+}
+
+
+/* ========================================
    FAQ SECTION
 ======================================== */
 
@@ -1247,6 +1389,28 @@ input {
 
 .faq-item.active .faq-icon {
   transform: rotate(180deg);
+}
+
+/* ========================================
+   FAQ SECTION MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .faq-section h2 {
+    font-size: 30px;
+    line-height: 1.15;
+    max-width: none;
+  }
+
+  .faq-list {
+    width: 100%;
+  }
 }
 
 /* ========================================
