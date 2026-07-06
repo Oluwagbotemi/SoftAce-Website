@@ -21,6 +21,7 @@ const filesSlides = [
 let activeFileSlide = 0;
 
 function updateFilesSection(index) {
+  if (!filesTitle || !filesPreviewMedia) return;
   if (index === activeFileSlide) return;
 
   activeFileSlide = index;
@@ -29,7 +30,6 @@ function updateFilesSection(index) {
   filesTitle.innerHTML = slide.title;
   filesPreviewMedia.src = slide.media;
   filesPreviewMedia.load();
-
   filesPreviewMedia.play().catch(() => {});
 
   progressBars.forEach((bar, barIndex) => {
@@ -37,7 +37,10 @@ function updateFilesSection(index) {
   });
 }
 
-window.addEventListener("scroll", () => {
+function handleFilesScroll() {
+  if (!filesSection) return;
+  if (window.innerWidth <= 1024) return;
+
   const rect = filesSection.getBoundingClientRect();
   const sectionHeight = filesSection.offsetHeight - window.innerHeight;
   const progress = Math.min(Math.max(-rect.top / sectionHeight, 0), 1);
@@ -51,7 +54,10 @@ window.addEventListener("scroll", () => {
   }
 
   updateFilesSection(index);
-});
+}
+
+window.addEventListener("scroll", handleFilesScroll, { passive: true });
+window.addEventListener("resize", handleFilesScroll);
 
 /* ========================================
    FAQ
@@ -73,7 +79,6 @@ faqItems.forEach((item) => {
   });
 });
 
-
 /* ========================================
    REVEAL SECTION
 ======================================== */
@@ -83,17 +88,13 @@ const revealSections = document.querySelectorAll(".reveal-section");
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-      } else {
-        entry.target.classList.remove("in-view");
-      }
+      entry.target.classList.toggle("in-view", entry.isIntersecting);
     });
   },
   {
     threshold: 0.2,
     rootMargin: "0px 0px -10% 0px",
-  }
+  },
 );
 
 revealSections.forEach((section) => {
@@ -110,7 +111,6 @@ window.addEventListener("load", () => {
 
 /* ========================================
    HERO BLUR ON SCROLL
-   Blur only when hero is about 80–90% out
 ======================================== */
 
 const heroSection = document.querySelector("#heroSection");
@@ -119,19 +119,10 @@ function updateHeroBlur() {
   if (!heroSection) return;
 
   const rect = heroSection.getBoundingClientRect();
-  const viewportH = window.innerHeight;
   const sectionH = rect.height;
-
-  // how far hero has moved past the top
   const scrolled = Math.max(0, -rect.top);
+  const progress = Math.min(scrolled / sectionH, 1);
 
-  // total distance before hero is fully gone
-  const maxScroll = sectionH;
-
-  // normalized progress 0 -> 1
-  const progress = Math.min(scrolled / maxScroll, 1);
-
-  // only begin blur very late in the section scroll
   const blurStart = 0.45;
   const blurEnd = 1;
 
@@ -142,7 +133,7 @@ function updateHeroBlur() {
     blurProgress = Math.min(Math.max(blurProgress, 0), 1);
   }
 
-  const blurValue = blurProgress * 10;      // adjust if you want lighter/heavier blur
+  const blurValue = blurProgress * 10;
   const opacityValue = 1 - blurProgress * 0.18;
   const scaleValue = 1 - blurProgress * 0.015;
 
