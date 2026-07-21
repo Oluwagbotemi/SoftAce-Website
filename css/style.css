@@ -683,7 +683,7 @@ input {
 
 .files-section {
   position: relative;
-  height: 300vh;
+  height: 260vh;
   margin-top: var(--section-gap);
 }
 
@@ -765,14 +765,29 @@ input {
 }
 
 .files-progress span {
+  --progress: 0%;
+
+  position: relative;
   width: 8px;
   height: 100%;
   border-radius: var(--radius-pill);
   background: #e5e5e5;
+  overflow: hidden;
 }
 
-.files-progress span.active {
+.files-progress span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   background: var(--gray40);
+  transform: scaleY(var(--progress-value, 0));
+  transform-origin: top;
+  transition: transform 0.08s linear;
+}
+
+.files-progress span.completed::after {
+  transform: scaleY(1);
 }
 
 .files-preview {

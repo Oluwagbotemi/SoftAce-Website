@@ -1,3 +1,7 @@
+/* ========================================
+   FILES SECTION
+======================================== */
+
 const filesSection = document.querySelector(".files-section");
 const filesTitle = document.querySelector("#filesTitle");
 const filesPreviewMedia = document.querySelector("#filesPreviewMedia");
@@ -18,46 +22,87 @@ const filesSlides = [
   },
 ];
 
-let activeFileSlide = 0;
+let activeFileSlide = -1;
 
 function updateFilesSection(index) {
   if (!filesTitle || !filesPreviewMedia) return;
   if (index === activeFileSlide) return;
 
   activeFileSlide = index;
+
   const slide = filesSlides[index];
+  const nextMediaUrl = new URL(slide.media, window.location.href).href;
 
   filesTitle.innerHTML = slide.title;
-  filesPreviewMedia.src = slide.media;
-  filesPreviewMedia.load();
-  filesPreviewMedia.play().catch(() => {});
 
-  progressBars.forEach((bar, barIndex) => {
-    bar.classList.toggle("active", barIndex === index);
+  if (filesPreviewMedia.src !== nextMediaUrl) {
+    filesPreviewMedia.src = slide.media;
+    filesPreviewMedia.load();
+    filesPreviewMedia.play().catch(() => {});
+  }
+}
+
+function updateFilesProgress(overallProgress) {
+  const scaledProgress = overallProgress * filesSlides.length;
+
+  progressBars.forEach((bar, index) => {
+    const localProgress = Math.min(
+      Math.max(scaledProgress - index, 0),
+      1,
+    );
+
+    bar.style.setProperty(
+      "--progress-value",
+      localProgress.toFixed(3),
+    );
+
+    bar.classList.toggle("completed", localProgress >= 1);
+    bar.classList.toggle(
+      "active",
+      localProgress > 0 && localProgress < 1,
+    );
   });
 }
 
 function handleFilesScroll() {
   if (!filesSection) return;
-  if (window.innerWidth <= 1024) return;
 
-  const rect = filesSection.getBoundingClientRect();
-  const sectionHeight = filesSection.offsetHeight - window.innerHeight;
-  const progress = Math.min(Math.max(-rect.top / sectionHeight, 0), 1);
-
-  let index = 0;
-
-  if (progress > 0.66) {
-    index = 2;
-  } else if (progress > 0.33) {
-    index = 1;
+  // Tablet and mobile use the stacked file previews.
+  if (window.innerWidth <= 1024) {
+    updateFilesSection(0);
+    updateFilesProgress(0);
+    return;
   }
 
-  updateFilesSection(index);
+  const rect = filesSection.getBoundingClientRect();
+  const scrollableDistance =
+    filesSection.offsetHeight - window.innerHeight;
+
+  if (scrollableDistance <= 0) return;
+
+  const overallProgress = Math.min(
+    Math.max(-rect.top / scrollableDistance, 0),
+    1,
+  );
+
+  const slideIndex = Math.min(
+    Math.floor(overallProgress * filesSlides.length),
+    filesSlides.length - 1,
+  );
+
+  updateFilesSection(slideIndex);
+  updateFilesProgress(overallProgress);
 }
 
-window.addEventListener("scroll", handleFilesScroll, { passive: true });
+window.addEventListener("scroll", handleFilesScroll, {
+  passive: true,
+});
+
 window.addEventListener("resize", handleFilesScroll);
+
+updateFilesSection(0);
+updateFilesProgress(0);
+handleFilesScroll();
 
 /* ========================================
    FAQ
@@ -67,6 +112,8 @@ const faqItems = document.querySelectorAll(".faq-item");
 
 faqItems.forEach((item) => {
   const question = item.querySelector(".faq-question");
+
+  if (!question) return;
 
   question.addEventListener("click", () => {
     faqItems.forEach((faq) => {
@@ -83,23 +130,33 @@ faqItems.forEach((item) => {
    REVEAL SECTION
 ======================================== */
 
-const revealSections = document.querySelectorAll(".reveal-section");
+const revealSections =
+  document.querySelectorAll(".reveal-section");
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      entry.target.classList.toggle("in-view", entry.isIntersecting);
-    });
-  },
-  {
-    threshold: 0.2,
-    rootMargin: "0px 0px -10% 0px",
-  },
-);
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle(
+          "in-view",
+          entry.isIntersecting,
+        );
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -10% 0px",
+    },
+  );
 
-revealSections.forEach((section) => {
-  revealObserver.observe(section);
-});
+  revealSections.forEach((section) => {
+    revealObserver.observe(section);
+  });
+} else {
+  revealSections.forEach((section) => {
+    section.classList.add("in-view");
+  });
+}
 
 /* ========================================
    HERO LOAD REVEAL
@@ -119,9 +176,12 @@ function updateHeroBlur() {
   if (!heroSection) return;
 
   const rect = heroSection.getBoundingClientRect();
-  const sectionH = rect.height;
+  const sectionHeight = rect.height;
+
+  if (sectionHeight <= 0) return;
+
   const scrolled = Math.max(0, -rect.top);
-  const progress = Math.min(scrolled / sectionH, 1);
+  const progress = Math.min(scrolled / sectionHeight, 1);
 
   const blurStart = 0.45;
   const blurEnd = 1;
@@ -129,19 +189,39 @@ function updateHeroBlur() {
   let blurProgress = 0;
 
   if (progress > blurStart) {
-    blurProgress = (progress - blurStart) / (blurEnd - blurStart);
-    blurProgress = Math.min(Math.max(blurProgress, 0), 1);
+    blurProgress =
+      (progress - blurStart) / (blurEnd - blurStart);
+
+    blurProgress = Math.min(
+      Math.max(blurProgress, 0),
+      1,
+    );
   }
 
   const blurValue = blurProgress * 10;
   const opacityValue = 1 - blurProgress * 0.18;
   const scaleValue = 1 - blurProgress * 0.015;
 
-  heroSection.style.setProperty("--section-blur", `${blurValue}px`);
-  heroSection.style.setProperty("--section-opacity", opacityValue);
-  heroSection.style.setProperty("--section-scale", scaleValue);
+  heroSection.style.setProperty(
+    "--section-blur",
+    `${blurValue}px`,
+  );
+
+  heroSection.style.setProperty(
+    "--section-opacity",
+    opacityValue,
+  );
+
+  heroSection.style.setProperty(
+    "--section-scale",
+    scaleValue,
+  );
 }
 
-window.addEventListener("scroll", updateHeroBlur, { passive: true });
+window.addEventListener("scroll", updateHeroBlur, {
+  passive: true,
+});
+
 window.addEventListener("resize", updateHeroBlur);
+
 updateHeroBlur();
