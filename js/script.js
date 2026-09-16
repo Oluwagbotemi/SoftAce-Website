@@ -225,3 +225,94 @@ window.addEventListener("scroll", updateHeroBlur, {
 window.addEventListener("resize", updateHeroBlur);
 
 updateHeroBlur();
+
+/* ========================================
+   PRIVACY POLICY SCROLL SPY
+======================================== */
+
+const policySections = document.querySelectorAll(
+  "[data-policy-section]"
+);
+
+const policyNavLinks = document.querySelectorAll(
+  ".policy-nav-link"
+);
+
+function setActivePolicySection(sectionId) {
+  policyNavLinks.forEach((link) => {
+    const targetId = link.getAttribute("href");
+
+    link.classList.toggle(
+      "active",
+      targetId === `#${sectionId}`
+    );
+  });
+}
+
+/* ========================================
+   OBSERVE POLICY SECTIONS
+======================================== */
+
+if (
+  policySections.length &&
+  policyNavLinks.length &&
+  "IntersectionObserver" in window
+) {
+  const policyObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleSections = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort(
+          (a, b) =>
+            Math.abs(a.boundingClientRect.top) -
+            Math.abs(b.boundingClientRect.top)
+        );
+
+      if (!visibleSections.length) return;
+
+      const currentSection = visibleSections[0];
+
+      setActivePolicySection(currentSection.target.id);
+    },
+    {
+      /*
+       * Creates an invisible reading zone.
+       *
+       * A section becomes active when it reaches
+       * roughly the upper-middle portion of the screen.
+       */
+      root: null,
+      rootMargin: "-20% 0px -65% 0px",
+      threshold: 0,
+    }
+  );
+
+  policySections.forEach((section) => {
+    policyObserver.observe(section);
+  });
+}
+
+/* ========================================
+   POLICY NAVIGATION CLICK
+======================================== */
+
+policyNavLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const targetId = link.getAttribute("href");
+
+    if (!targetId || !targetId.startsWith("#")) return;
+
+    const targetSection = document.querySelector(targetId);
+
+    if (!targetSection) return;
+
+    event.preventDefault();
+
+    setActivePolicySection(targetSection.id);
+
+    targetSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+});
