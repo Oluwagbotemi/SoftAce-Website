@@ -2212,9 +2212,12 @@ input {
     border-radius: 32px;
   }
 
+  .policy-hero-logo {
+    margin-bottom: 64px;
+  }
+
   .policy-hero-logo img {
     width: 58px;
-    margin-bottom: 64px;
   }
 
   .policy-hero h1 {
@@ -2299,9 +2302,12 @@ input {
     border-radius: 28px;
   }
 
+  .policy-hero-logo {
+    margin-bottom: 48px;
+  }
+
   .policy-hero-logo img {
     width: 52px;
-    margin-bottom: 48px;
   }
 
   .policy-hero-content {
@@ -2415,4 +2421,132 @@ input {
 
 .policy-reveal-4 {
   --reveal-delay: 0.55s;
+}
+
+/* ========================================
+   POLICY LINKS
+======================================== */
+
+.policy-content-section a,
+.policy-contact a {
+  color: var(--primary-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  overflow-wrap: anywhere;
+
+  transition: opacity 0.2s ease;
+}
+
+.policy-content-section a:hover,
+.policy-contact a:hover {
+  opacity: 0.75;
+}
+
+.policy-content-section strong {
+  font-weight: 700;
+  color: var(--gray50);
+}
+
+/* ========================================
+   COOKIE POLICY TABLE
+======================================== */
+
+.policy-table-wrap {
+  width: 100%;
+  margin: 24px 0;
+
+  border: 1px solid var(--gray10);
+  border-radius: 12px;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.policy-table {
+  width: 100%;
+  min-width: 600px;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  font-family: "Satoshi", Arial, sans-serif;
+  text-align: left;
+}
+
+.policy-table thead {
+  background: #f6f6f6;
+}
+
+.policy-table th {
+  padding: 16px;
+
+  border-bottom: 1px solid var(--gray10);
+
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+
+  color: var(--gray50);
+}
+
+.policy-table td {
+  padding: 16px;
+
+  border-bottom: 1px solid var(--gray10);
+
+  font-size: 13px;
+  line-height: 21px;
+  font-weight: 400;
+
+  color: var(--gray40);
+  vertical-align: top;
+}
+
+.policy-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.policy-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.policy-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* ========================================
+   COOKIE POLICY — TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+  .policy-table-wrap {
+    margin: 22px 0;
+  }
+}
+
+/* ========================================
+   COOKIE POLICY — MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .policy-table-wrap {
+    margin: 20px 0;
+    border-radius: 10px;
+  }
+
+  .policy-table th,
+  .policy-table td {
+    padding: 14px;
+  }
+
+  .policy-table th {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .policy-table td {
+    font-size: 13px;
+    line-height: 21px;
+  }
 }
